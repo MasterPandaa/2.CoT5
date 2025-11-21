@@ -1,21 +1,23 @@
-import sys
 import random
+import sys
+
 import pygame
 
 # -----------------------------
 # Konfigurasi dasar
 # -----------------------------
-WIDTH, HEIGHT = 600, 400       # Resolusi layar
-BLOCK_SIZE = 20                # Ukuran grid per blok
-SPEED = 10                     # FPS, semakin tinggi semakin cepat
+WIDTH, HEIGHT = 600, 400  # Resolusi layar
+BLOCK_SIZE = 20  # Ukuran grid per blok
+SPEED = 10  # FPS, semakin tinggi semakin cepat
 
 # Warna
-BLACK  = (0, 0, 0)
-WHITE  = (255, 255, 255)
-GREEN  = (0, 200, 0)
-RED    = (220, 30, 30)
-GRAY   = (40, 40, 40)
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
+GREEN = (0, 200, 0)
+RED = (220, 30, 30)
+GRAY = (40, 40, 40)
 YELLOW = (240, 220, 70)
+
 
 # -----------------------------
 # Utilitas
@@ -66,6 +68,7 @@ def render_text(surface, text, font, color, center):
 # -----------------------------
 # Game utama
 # -----------------------------
+
 
 def main():
     pygame.init()
@@ -144,8 +147,10 @@ def main():
 
             # Cek tabrakan dinding
             out_of_bounds = (
-                new_head[0] < 0 or new_head[0] >= WIDTH or
-                new_head[1] < 0 or new_head[1] >= HEIGHT
+                new_head[0] < 0
+                or new_head[0] >= WIDTH
+                or new_head[1] < 0
+                or new_head[1] >= HEIGHT
             )
 
             # Sisipkan kepala baru
@@ -177,9 +182,23 @@ def main():
         render_text(screen, f"Score: {score}", font, WHITE, (80, 20))
 
         if game_over:
-            render_text(screen, "GAME OVER", big_font, YELLOW, (WIDTH // 2, HEIGHT // 2 - 20))
-            render_text(screen, "Press R/Enter/Space to Restart", font, WHITE, (WIDTH // 2, HEIGHT // 2 + 20))
-            render_text(screen, "Press Q/Esc to Quit", font, GRAY, (WIDTH // 2, HEIGHT // 2 + 50))
+            render_text(
+                screen, "GAME OVER", big_font, YELLOW, (WIDTH // 2, HEIGHT // 2 - 20)
+            )
+            render_text(
+                screen,
+                "Press R/Enter/Space to Restart",
+                font,
+                WHITE,
+                (WIDTH // 2, HEIGHT // 2 + 20),
+            )
+            render_text(
+                screen,
+                "Press Q/Esc to Quit",
+                font,
+                GRAY,
+                (WIDTH // 2, HEIGHT // 2 + 50),
+            )
 
         pygame.display.flip()
         clock.tick(SPEED)
